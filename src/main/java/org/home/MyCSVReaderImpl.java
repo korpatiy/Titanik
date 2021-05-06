@@ -50,12 +50,17 @@ public class MyCSVReaderImpl implements MyCSVReader {
         reader.close();
     }
 
-
+    /**
+     * Проверяет строку на пустоту
+     *
+     * @param value входящая строка
+     * @return приведенное значение или -1 по умолчанию (чтобы не учитывать таких пассажиров)
+     */
     private int tryParseInt(String value) {
         try {
             return Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            return 0;
+            return -1;
         }
     }
 }

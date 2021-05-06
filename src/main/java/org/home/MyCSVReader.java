@@ -17,6 +17,6 @@ public interface MyCSVReader {
      * @return список пассажиров
      */
     List<Passenger> readAllFromLine(String fileName, int line) throws IOException, CsvException;
-    
+
     //void readToBean(String fileName) throws IOException;
 }
