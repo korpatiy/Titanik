@@ -1,8 +1,9 @@
-package org.home;
+package org.home.reader_api;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
+import org.home.reader_api.MyCSVLineReader;
 import org.home.entity.Passenger;
 
 import java.io.FileReader;
@@ -10,7 +11,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyCSVReaderImpl implements MyCSVReader {
+/**
+ * Реализация для чтения в список {@link Passenger}
+ */
+public class PassengerLineReader implements MyCSVLineReader {
 
     private List<Passenger> passengers;
     private CSVReader reader;
@@ -23,15 +27,6 @@ public class MyCSVReaderImpl implements MyCSVReader {
         readToList();
         return passengers;
     }
-
-    /*@Override
-    public void readToBean(String fileName) throws IOException {
-        Reader reader = Files.newBufferedReader(Path.of(fileName));
-        passengers = new CsvToBeanBuilder(reader)
-                .withType(Passenger.class)
-                .build()
-                .parse();
-    }*/
 
     /**
      * Построчно читает файл, преобразуя строку в {@link Passenger}

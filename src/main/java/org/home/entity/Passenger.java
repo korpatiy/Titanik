@@ -4,17 +4,14 @@ import com.opencsv.bean.CsvBindByName;
 
 public class Passenger {
 
-    //@CsvBindByName(column = "Survived")
+    @CsvBindByName(column = "Survived")
     private int survived;
-
-    //@CsvBindByName(column = "Name")
+    @CsvBindByName(column = "Name")
     private String name;
-
-    //@CsvBindByName(column = "Sex")
+    @CsvBindByName(column = "Sex")
     private String sex;
-
-    //@CsvBindByName(column = "Age")
-    private int age;
+    @CsvBindByName(column = "Age")
+    private double age;
 
     public int getSurvived() {
         return survived;
@@ -40,7 +37,7 @@ public class Passenger {
         this.sex = sex;
     }
 
-    public int getAge() {
+    public double getAge() {
         return age;
     }
 
