@@ -31,20 +31,11 @@ public class PassengerWorkerImpl implements PassengerWorker {
 
     @Override
     public int getAvgAgeBy(Predicate<Passenger> predicate) {
-       /* passengers
+        return (int) passengers
                 .stream()
-                .filter(predicate)*/
-        int survived = 1;
-        if (predicate.equals("male"))
-            survived = 0;
-        int sumAge = 0;
-        int count = 0;
-        for (Passenger p : passengers) {
-            if (p.getSex().equals("male") && p.getSurvived() == survived) {
-                sumAge += p.getAge();
-                count++;
-            }
-        }
-        return sumAge / count;
+                .filter(predicate)
+                .mapToDouble(Passenger::getAge)
+                .average()
+                .getAsDouble();
     }
 }

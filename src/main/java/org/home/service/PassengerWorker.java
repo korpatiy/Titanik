@@ -20,7 +20,7 @@ public interface PassengerWorker extends MyCSVWorker{
     /**
      * Выполняет подсчет среднего возраста по заданному предикату
      * @param predicate задаваемый предикат
-     * @return среднее значение возраста
+     * @return среднее значение возраста int
      */
     int getAvgAgeBy(Predicate<Passenger> predicate);
 }
