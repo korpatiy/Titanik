@@ -6,8 +6,10 @@ import org.home.reader_api.MyCSVBeanReader;
 import org.home.entity.Passenger;
 import org.home.service.PassengerWorker;
 import org.home.service.PassengerWorkerBuilder;
+import org.home.service.WorkerBuilder;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -18,7 +20,7 @@ public class Main {
         //Чтение построчно в бин
         /*MyCSVLineReader reader = new PassengerLineReader();
         reader.readAllFromLine("src/main/resources/data.csv", 1);*/
-
+        
         //Чтение с автопарсом в бин
         MyCSVBeanReader beanReader = new BeanReaderImpl();
         List<Passenger> passengers = beanReader.readToBean("src/main/resources/data.csv", Passenger.class);
@@ -30,7 +32,7 @@ public class Main {
         Predicate<Passenger> diedMales = p -> p.getSex().equals("male") && p.getSurvived() == 0 && p.getAge() != 0;
         Predicate<Passenger> survivedFemales = p -> p.getSex().equals("female") && p.getSurvived() == 1 && p.getAge() != 0;
 
-        Map<Integer, Integer> nameCountMap = passengerWorker.getNameCountMap();
+        Map<Integer, Long> nameCountMap = passengerWorker.getNameCountMap();
         System.out.println(passengerWorker.getAvgAgeBy(diedMales));
         System.out.println(passengerWorker.getAvgAgeBy(survivedFemales));
 

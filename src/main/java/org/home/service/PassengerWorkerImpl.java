@@ -2,10 +2,10 @@ package org.home.service;
 
 import org.home.entity.Passenger;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Реализует {@link PassengerWorker}
@@ -19,14 +19,19 @@ public class PassengerWorkerImpl implements PassengerWorker {
     }
 
     @Override
-    public Map<Integer, Integer> getNameCountMap() {
-        Map<Integer, Integer> map = new HashMap<>();
+    public Map<Integer, Long> getNameCountMap() {
+        return passengers.
+                stream()
+                .collect(Collectors
+                        .groupingBy(p -> p.getName().length(), Collectors.counting()));
+
+        /*Map<Integer, Long> map = new HashMap<>();
         passengers
                 .forEach(p -> {
                     map
                             .compute(p.getName().length(), (k, v) -> v == null ? 1 : v + 1);
                 });
-        return map;
+        return map;*/
     }
 
     @Override

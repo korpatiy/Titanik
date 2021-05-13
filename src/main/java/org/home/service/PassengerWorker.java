@@ -15,7 +15,7 @@ public interface PassengerWorker extends MyCSVWorker{
      *
      * @return Map, где ключ - количество символов в имени, а значение - количество таких имен.
      */
-    Map<Integer, Integer> getNameCountMap();
+    Map<Integer, Long> getNameCountMap();
 
     /**
      * Выполняет подсчет среднего возраста по заданному предикату
